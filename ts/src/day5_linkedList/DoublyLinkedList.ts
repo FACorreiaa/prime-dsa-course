@@ -29,6 +29,20 @@ export default class DoublyLinkedList<T> {
         this.head = node;
     }
 
+    append(item: T): void {
+        this.length++;
+        const node = { value: item } as Node<T>;
+
+        if (!this.tail) {
+            this.head = this.tail = node;
+            return;
+        }
+
+        node.prev = this.tail;
+        this.tail.next = node;
+        this.tail = node;
+    }
+
     insertAt(item: T, idx: number): void {
         if (idx > this.length) {
             throw new Error("error");
@@ -54,20 +68,6 @@ export default class DoublyLinkedList<T> {
         if (node.prev) {
             node.prev.next = curr;
         }
-    }
-
-    append(item: T): void {
-        this.length++;
-        const node = { value: item } as Node<T>;
-
-        if (!this.tail) {
-            this.head = this.tail = node;
-            return;
-        }
-
-        node.prev = this.tail;
-        this.tail.next = node;
-        this.tail = node;
     }
 
     remove(item: T): T | undefined {
