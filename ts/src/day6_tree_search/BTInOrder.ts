@@ -12,7 +12,7 @@ function walk(curr: BinaryNode<number> | null, path: number[]): number[] {
     return path;
 }
 
-export default function pre_order_search(head: BinaryNode<number>): number[] {
+export default function in_order_search(head: BinaryNode<number>): number[] {
     const path: number[] = [];
     walk(head, path);
 
